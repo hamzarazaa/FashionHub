@@ -8,6 +8,8 @@ MONTHLY_FREE_TRANSFERS = 3
 
 def transfer_fee(amount, transfers_this_month=0):
     """Fee for one outgoing transfer. The first transfers of the month are free."""
+    if is_premier:
+        return 0
     if transfers_this_month < MONTHLY_FREE_TRANSFERS:
         return 0
     for limit, fee in TIERS:
